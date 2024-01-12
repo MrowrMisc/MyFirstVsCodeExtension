@@ -2,6 +2,20 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
+class LensCodeLensProvider implements vscode.CodeLensProvider {
+    provideCodeLenses(document: vscode.TextDocument): vscode.CodeLens[] {
+        const lenses: vscode.CodeLens[] = [];
+        for (let i = 0; i < document.lineCount; i++) {
+            const line = document.lineAt(i);
+            if (line.text.includes('lens')) {
+                const range = new vscode.Range(i, 0, i, 0);
+                lenses.push(new vscode.CodeLens(range, { title: "Ah ha! A lens!", command: 'extension.sayHello' }));
+            }
+        }
+        return lenses;
+    }
+}
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -20,6 +34,8 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	context.subscriptions.push(disposable);
+
+	context.subscriptions.push(vscode.languages.registerCodeLensProvider('typescript', new LensCodeLensProvider()));
 }
 
 // This method is called when your extension is deactivated

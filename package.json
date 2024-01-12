@@ -9,13 +9,20 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:typescript"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "vscode-specs-cpp-test-runner.helloWorld",
         "title": "Hello World"
+      }
+    ],
+    "codeLensProviders": [
+      {
+        "language": "typescript"
       }
     ]
   },
