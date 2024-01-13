@@ -24,7 +24,16 @@
       {
         "language": "typescript"
       }
-    ]
+    ],
+    "menus": {
+      "testing/item/context": [
+        {
+          "command": "extension.sayHello",
+          "group": "inline",
+          "when": "testId == 'test-id-2'"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run package",
