@@ -16,7 +16,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "vscode-specs-cpp-test-runner.helloWorld",
+        "command": "extension.sayHello",
         "title": "Hello World"
       }
     ],
